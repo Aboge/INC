@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息编辑</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link href="assets/css/user-information-edit-main.css" rel="stylesheet">
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+
+</head>
+<body>
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="logout-trigger">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--编辑个人资料-->
+<main>
+    <div class="container" style="padding-top: 0px;">
+        <div class="content">
+
+            <!--用户头像-->
+            <div id="avatar" class="avatar-wrap">
+                <div class="avatar"><img class="avatar-edit" src=""></div>
+                <form method="PATCH" enctype="multipart/form-data">
+                    <label class="change-btn" for="avatar-change">
+                        更换头像
+                        <input id="avatar-change" type="file" name="logo" accept="image/*">
+                    </label>
+                </form>
+            </div>
+
+            <!--用户信息-->
+            <form class="form-basic">
+
+                <div class="line-wrap">
+                    <h1 class="title">基本信息</h1>
+                </div>
+
+                <div class="line-wrap">
+                    <label class="label">邮箱</label>
+                    <div class="input-wrap">
+                        <input id="email" type="text" class="nomal-input" name="user_realname" value="" data-name="邮箱" autocomplete="off" data-target="form-basic">
+                        <i></i>
+                    </div>
+                </div>
+
+                <div class="line-wrap">
+                    <label class="label">性别</label>
+                    <div class="input-wrap">
+                        <div class="is-select select-input" id="gender" name="user_gender">
+                            <a class="placeholder" data-id="">不详</a>
+                            <ul class="option-list">
+                                <li class="option-item" data-value="u">不详</li>
+                                <li class="option-item" data-value="m">男</li>
+                                <li class="option-item" data-value="w">女</li>
+                            </ul>
+                        </div>
+                        <i></i>
+                    </div>
+                </div>
+
+                <div class="line-wrap">
+                    <label class="label">生日</label>
+                    <div class="input-wrap">
+                        <div id="years" class="is-select select-input birthday" name="year">
+                            <a class="placeholder">年</a><ul class="option-list"><li class="option-item" data-value="0000">年</li><li class="option-item" data-value="1934">1934</li><li class="option-item" data-value="1935">1935</li><li class="option-item" data-value="1936">1936</li><li class="option-item" data-value="1937">1937</li><li class="option-item" data-value="1938">1938</li><li class="option-item" data-value="1939">1939</li><li class="option-item" data-value="1940">1940</li><li class="option-item" data-value="1941">1941</li><li class="option-item" data-value="1942">1942</li><li class="option-item" data-value="1943">1943</li><li class="option-item" data-value="1944">1944</li><li class="option-item" data-value="1945">1945</li><li class="option-item" data-value="1946">1946</li><li class="option-item" data-value="1947">1947</li><li class="option-item" data-value="1948">1948</li><li class="option-item" data-value="1949">1949</li><li class="option-item" data-value="1950">1950</li><li class="option-item" data-value="1951">1951</li><li class="option-item" data-value="1952">1952</li><li class="option-item" data-value="1953">1953</li><li class="option-item" data-value="1954">1954</li><li class="option-item" data-value="1955">1955</li><li class="option-item" data-value="1956">1956</li><li class="option-item" data-value="1957">1957</li><li class="option-item" data-value="1958">1958</li><li class="option-item" data-value="1959">1959</li><li class="option-item" data-value="1960">1960</li><li class="option-item" data-value="1961">1961</li><li class="option-item" data-value="1962">1962</li><li class="option-item" data-value="1963">1963</li><li class="option-item" data-value="1964">1964</li><li class="option-item" data-value="1965">1965</li><li class="option-item" data-value="1966">1966</li><li class="option-item" data-value="1967">1967</li><li class="option-item" data-value="1968">1968</li><li class="option-item" data-value="1969">1969</li><li class="option-item" data-value="1970">1970</li><li class="option-item" data-value="1971">1971</li><li class="option-item" data-value="1972">1972</li><li class="option-item" data-value="1973">1973</li><li class="option-item" data-value="1974">1974</li><li class="option-item" data-value="1975">1975</li><li class="option-item" data-value="1976">1976</li><li class="option-item" data-value="1977">1977</li><li class="option-item" data-value="1978">1978</li><li class="option-item" data-value="1979">1979</li><li class="option-item" data-value="1980">1980</li><li class="option-item" data-value="1981">1981</li><li class="option-item" data-value="1982">1982</li><li class="option-item" data-value="1983">1983</li><li class="option-item" data-value="1984">1984</li><li class="option-item" data-value="1985">1985</li><li class="option-item" data-value="1986">1986</li><li class="option-item" data-value="1987">1987</li><li class="option-item" data-value="1988">1988</li><li class="option-item" data-value="1989">1989</li><li class="option-item" data-value="1990">1990</li><li class="option-item" data-value="1991">1991</li><li class="option-item" data-value="1992">1992</li><li class="option-item" data-value="1993">1993</li><li class="option-item" data-value="1994">1994</li><li class="option-item" data-value="1995">1995</li><li class="option-item" data-value="1996">1996</li><li class="option-item" data-value="1997">1997</li><li class="option-item" data-value="1998">1998</li><li class="option-item" data-value="1999">1999</li><li class="option-item" data-value="2000">2000</li><li class="option-item" data-value="2001">2001</li><li class="option-item" data-value="2002">2002</li><li class="option-item" data-value="2003">2003</li><li class="option-item" data-value="2004">2004</li><li class="option-item" data-value="2005">2005</li><li class="option-item" data-value="2006">2006</li><li class="option-item" data-value="2007">2007</li><li class="option-item" data-value="2008">2008</li><li class="option-item" data-value="2009">2009</li><li class="option-item" data-value="2010">2010</li><li class="option-item" data-value="2011">2011</li><li class="option-item" data-value="2012">2012</li><li class="option-item" data-value="2013">2013</li><li class="option-item" data-value="2014">2014</li><li class="option-item" data-value="2015">2015</li><li class="option-item" data-value="2016">2016</li></ul>
+                        </div>
+                        <div id="month" class="is-select select-input birthday" name="month">
+                            <a class="placeholder">月</a><ul class="option-list"><li class="option-item" data-value="00">月</li><li class="option-item" data-value="01">01</li><li class="option-item" data-value="02">02</li><li class="option-item" data-value="03">03</li><li class="option-item" data-value="04">04</li><li class="option-item" data-value="05">05</li><li class="option-item" data-value="06">06</li><li class="option-item" data-value="07">07</li><li class="option-item" data-value="08">08</li><li class="option-item" data-value="09">09</li><li class="option-item" data-value="10">10</li><li class="option-item" data-value="11">11</li><li class="option-item" data-value="12">12</li></ul>
+                        </div>
+                        <div id="day" class="is-select select-input birthday" name="day">
+                            <a class="placeholder">日</a><ul class="option-list"><li class="option-item" data-value="00">日</li><li class="option-item" data-value="01">01</li><li class="option-item" data-value="02">02</li><li class="option-item" data-value="03">03</li><li class="option-item" data-value="04">04</li><li class="option-item" data-value="05">05</li><li class="option-item" data-value="06">06</li><li class="option-item" data-value="07">07</li><li class="option-item" data-value="08">08</li><li class="option-item" data-value="09">09</li><li class="option-item" data-value="10">10</li><li class="option-item" data-value="11">11</li><li class="option-item" data-value="12">12</li><li class="option-item" data-value="13">13</li><li class="option-item" data-value="14">14</li><li class="option-item" data-value="15">15</li><li class="option-item" data-value="16">16</li><li class="option-item" data-value="17">17</li><li class="option-item" data-value="18">18</li><li class="option-item" data-value="19">19</li><li class="option-item" data-value="20">20</li><li class="option-item" data-value="21">21</li><li class="option-item" data-value="22">22</li><li class="option-item" data-value="23">23</li><li class="option-item" data-value="24">24</li><li class="option-item" data-value="25">25</li><li class="option-item" data-value="26">26</li><li class="option-item" data-value="27">27</li><li class="option-item" data-value="28">28</li><li class="option-item" data-value="29">29</li><li class="option-item" data-value="30">30</li><li class="option-item" data-value="31">31</li></ul>
+                        </div>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <label class="label">简介</label>
+                    <div class="input-wrap">
+                        <input id="introduction" type="text" class="nomal-input" name="description" value="" autocomplete="off" data-target="form-basic">
+                        <i></i>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <label class="label">居住城市</label>
+                    <div class="input-wrap">
+                        <input id="location" type="text" class="nomal-input" name="city" value="" autocomplete="off" data-target="form-basic">
+                        <i></i>
+                    </div>
+                </div>
+                <span id="form-basic" class="alert-text"></span>
+                <div class="line-wrap">
+                    <div class="input-wrap">
+                        <input type="button" class="submit-btn" value="保存">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <div class="over-auto" style="height: 116px;">
+        <div class="fl footer-fluid">
+            <p class="fluid-title">关于我们</p>
+            <!--inc网站介绍-->
+            <div class="fluid-content inc-desc">
+                已经有上万的各类兴趣爱好者入驻了兴趣圈<br>
+                在这里，发现基于共同兴趣的同好，鼓励原创和分享精神
+                除了美好的作品和技能，我们更在意每一件分享作品背后价值观的认同
+            </div>
+        </div>
+        <div class="fr footer-fluid text-center">
+            <p class="fluid-title"> 关注兴趣圈 </p>
+            <!--INC流媒体内容-->
+            <div class="fluid-content">
+                <!--微信小logo-->
+                <div class="qrcode-parallel">
+                    <div  class="link-logo wechat">
+                        <a>
+                            <i class="icon-wechat"></i>
+                        </a>
+                    </div>
+                    <!--微信二维码-->
+                    <a class="qrcodewechat"></a>
+                </div>
+                <!--INC微博-->
+                <div class="link-logo">
+                    <a href="http://weibo.com/u/3866605448" target="_blank"><i class="icon-weibo"></i></a>  <!--在新窗口跳转打开微博页面-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-auto inc-detail">
+        <div class="footer-left">
+            <span>&copy;2017 inc.com</span>
+            <span>ABOGE版权所有</span>
+
+            <div class="slash-list">
+                <a href="" class="slash-item"><i>用户协议</i></a>
+                <a href="" class="slash-item"><i>友情链接</i></a>
+            </div>
+        </div>
+        <div class="footer-right slash-list">
+            <a class="slash-item" href=""><i>关于</i></a>
+            <a class="slash-item" href=""><i>联系</i></a>
+            <a class="slash-item" href=""><i>加入我们</i></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+<!--检测每个页面是否为当前登录用户-->
+<script src="assets/js/CheckUser.js"></script>
+<script>
+    $(function () {
+        /*检测登录*/
+        check_login();
+
+        /*多选项输入窗口点击事件*/
+        $(".placeholder").click(function () {
+            $('ul').removeClass("option-list-open");
+            $(this).next().toggleClass("option-list-open");
+            return false;
+        })
+        $(document).click(function(){
+            $('ul').removeClass("option-list-open");
+        });
+
+        /*通过点击添加点击内容*/
+        /*设置性别*/
+        $('#gender .option-item').click(function(){
+            $('#gender a').text($(this).text());
+            $('#gender a').attr('data-id',$(this).attr('data-value'));
+
+        });
+        /*设置生日*/
+        $('#years .option-item').click(function(){
+            $('#years a').text($(this).text());
+        });
+        $('#month .option-item').click(function(){
+            $('#month a').text($(this).text());
+        });
+        $('#day .option-item').click(function(){
+            $('#day a').text($(this).text());
+        });
+
+        /*设置地点*/
+        $('#sheng .option-item').click(function(){
+            $('#sheng a').text($(this).text());
+        });
+
+        $('#shi .option-item').click(function(){
+            $('#shi a').text($(this).text());
+        });
+
+        $('#sheng .option-item').click(function(){
+            $('#sheng a').text($(this).text());
+        });
+
+
+        /*发布按钮，提交个人信息*/
+        function information_edit(){
+            var email = $("#email").val();
+            var sex = $('#gender a').attr('data-id');
+            var birthday = $('#years a').text()+'-'+$('#month a').text()+'-'+$('#day a').text();
+            var introduction = $("#introduction").val();
+            var location = $("#location").val();
+
+            $.ajax({
+                url:'/INC/Myinformation.do',
+                type:"post",
+                data:{
+
+                    'email':email,
+                    'sex':sex,
+                    'birthday':birthday,
+                    'introduction':introduction,
+                    'location':location
+                }
+            }).done(function(data){
+                data = JSON.parse(data);
+
+                if(data[0].result)
+                {
+                    alert("资料修改成功！");
+                    window.location.href = 'inc-user-information.html';
+                }
+                else
+                {
+                    alert("资料修改失败！");
+                }
+            });
+        }
+        $(".submit-btn").click(function () {
+            information_edit();
+        });
+
+    })
+</script>
+</html>

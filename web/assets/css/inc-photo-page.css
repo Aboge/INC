@@ -1,0 +1,183 @@
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+em{font-style:normal;}
+a{text-decoration:none;cursor:pointer;color:#666666;}
+
+a:hover{color:#FF6699;}
+
+body{color:#666666;font-family:Arial;font-size:12px;}
+.fl{float:left;}.fr{float:right;}
+
+.clearfix{display:inline-table;}
+*html .clearfix{height:1%;}
+.clearfix{display:block;}
+*+html .clearfix{min-height:1%;}
+.demo{width:950px;margin:0 auto;}
+
+/* item_list */
+.item_list{position:relative;padding:0 0 50px;}
+
+.item{
+    width:226px;background:#fff;overflow:hidden;margin:15px 0 0 0;
+    position: absolute;
+    box-shadow:0 1px 3px rgba(34, 25, 25, 0.2);
+}
+.item_t{padding:10px 8px 0;}
+.item_t .img{background-color:#FFFFFF;margin:0 auto;position:relative;width:210px;/*min-height:210px;*/}
+.item_t .img a img{width:210px;}
+.item_t .img a{display:block;}
+.item_t .img .img-photo{width: 210px;height: auto}
+.item_t .img a:hover img{filter:alpha(opacity=80);-khtml-opacity:0.8;opacity:0.8;-webkit-transition:all 0.3s ease-out;-khtml-transition:all 0.3s ease-out;}
+
+.img .overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+
+    overflow: hidden;               /*先将超出的文本部分隐藏*/
+    -webkit-text-overflow: ellipsis;        /*用省略号“…”隐藏超出范围的文本*/
+    /*多行文本溢出显示省略号,适用于WebKit浏览器或移动端的页面*/
+    display: -webkit-box;           /*将对象p作为弹性伸缩盒子模型显示*/
+    -webkit-line-clamp: 4;          /*用来限制在一个块元素显示的文本的行数*/
+    -webkit-box-orient: vertical;   /*设置或检索伸缩盒对象的子元素的排列方式*/
+
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    -ms-transform: scale(0,1);
+    transform: scale(0,1);
+}
+/*当hover时图片上的标题上内容横向变化显示出来*/
+.img:hover .overlay {
+    opacity: 1;   /*div元素的不透明级别*/
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.img img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+.img:hover img {
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+}
+
+.img h2 {
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    font-size: 20px;
+    margin: 5% auto;
+    margin-bottom: 0;
+    background-color: transparent;
+    color: #f9f9f9;
+    padding: 1em 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,-100%,0);
+    transform: translate3d(0,-100%,0);
+}
+.img p a{
+    font-size: 12px;
+    color: #f9f9f9;
+}
+/*.overlay a:hover{
+    color: #85888a;
+}*/
+
+.img p{
+    color: #FFF;
+    max-height: 90px;
+    width: 168px;
+    /*
+    padding: 1em 0;
+    */
+
+
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+
+}
+/*标题和内容描述从上下方向出来动画*/
+.img:hover a, .img:hover p, .img:hover h2 {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+/*图片下面的信息栏设定*/
+.item_b{padding: 5px 8px;  height: 40px;  width: 226px; overflow: hidden;  }
+
+/*author*/
+.item_b .works-author{
+    float: left;
+    max-width: 90px;
+    height: 30px;
+    overflow: hidden;
+    display: inline-block;
+}
+.item_b .works-author img{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    vertical-align:middle;
+}
+.item_b .works-author a{
+    float: left;
+    max-width: 90px;
+    height: 30px;
+    display: inline-block;
+    white-space:nowrap;     /*强制规定不换行*/
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.item_b .items_likes,.items_comment{
+    display: inline-block;
+    float: right;
+    max-width: 60px;
+    height: 30px;
+    overflow: hidden;
+}
+.item_b .items_comment{
+    margin-left: 5px;
+}
+/*like*/
+.item_b .items_likes .like_btn{background-image:url("../logo/grayheart.png");background-size: 100% 100%;line-height:30px;display:inline-block;float:left;height: 20px;width: 20px;margin: 5px auto;}
+.item_b .items_likes .red_likes{  background-image: url(../logo/redheart.png);  }
+.item_b .bold{max-width:33px;overflow: hidden;line-height:30px;float:left;padding:0px 0px;color:#666666;display: inline-block;vertical-align: top;}
+/*comment*/
+.item_b .items_comment .comment_btn{background-image:url("../logo/comment.png");background-size: 100% 100%;line-height:30px;display:inline-block;float:left;height: 20px;width: 20px;margin: 5px auto;}
+/* more */
+#more{display:block;margin:10px auto 20px;}
+
+/* infscr-loading */
+#infscr-loading{bottom:-10px;left:45%;position:absolute;text-align:center;height:20px;line-height:20px;z-index:100;width:120px;}
+
+/* page */
+.page{display:none;font-size:18px;height:60px;text-align:center;margin:50px 0 0 0;}
+.page_num a,.page_num span{margin:0 2px;background:url("../images/page.png") no-repeat;display:inline-block;width:30px;height:28px;line-height:26px;overflow:hidden;vertical-align:top;}
+.page_num a{background-position:-65px 0;color:#FF3333;overflow:hidden;}
+.page_num .prev{background-position:1px -33px;}
+.page_num .unprev{background-position:1px 0;cursor:default;}
+.page_num .next{background-position:-32px 0;}
+.page_num .unnext{background-position:-32px -33px;cursor:default;}
+.page_num .current{background-position:-99px 0;color:#FFFFFF;}
+.page_num .etc{background-position:-172px 8px;}
+

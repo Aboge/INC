@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>文章发布页面</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/works-publish-main.css">
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+
+    <!--编辑器添加链接-->
+    <!--<link href="assets/text-editor/css/themes/quill.snow.css" rel="stylesheet">
+    <script src="assets/text-editor/dist/quill.js"></script>-->
+
+    <!--新编辑器-->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+
+    <!--检测每个页面是否为当前登录用户-->
+    <script src="assets/js/CheckUser.js"></script>
+
+    <style type="text/css">
+        .content {
+            height: 600px;
+        }
+        section {
+            margin: auto;
+            text-align: left;
+        }
+        .main-zone{
+            padding: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a class="active" href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="content">
+
+        <!--写作选框-->
+        <div class="main-zone">
+
+            <section id="editor">
+                <div id='edit'>
+
+                </div>
+            </section>
+
+            <script src="assets/edit/libs/jquery-1.11.1.min.js"></script>
+            <script src="assets/edit/froala_editor.min.js"></script>
+            <script src="assets/edit/plugins/tables.min.js"></script>
+            <script src="assets/edit/plugins/lists.min.js"></script>
+            <script src="assets/edit/plugins/colors.min.js"></script>
+            <script src="assets/edit/plugins/media_manager.min.js"></script>
+            <script src="assets/edit/plugins/font_family.min.js"></script>
+            <script src="assets/edit/plugins/font_size.min.js"></script>
+            <script src="assets/edit/plugins/block_styles.min.js"></script>
+            <script src="assets/edit/plugins/video.min.js"></script>
+
+
+
+        </div>
+
+        <!--上传选项-->
+        <div class="aside-zone">
+            <form class="post-form" action="/rest/posts" method="POST">
+                <!--添加标题-->
+                <label>标题</label>
+                <input type="text" class="m-input" name="title" value="" autofocus="" autocomplete="off">
+                <!--添加标签-->
+                <div class="widget-taginput">
+                    <label>标签</label>
+                    <span class="tags-count">0/1</span>
+                    <div class="tags-wrap m-input">
+                        <!--<input type="text" class="tag-input" placeholder="请选择标签">-->
+                        <div class="tag-input" data-id="">请选择标签</div>
+                    </div>
+                    <label>推荐标签</label>
+                    <div class="tags-recommend">
+                        <a class="tag-item" data-id="1">随笔</a>
+                        <a class="tag-item" data-id="2">散文</a>
+                        <a class="tag-item" data-id="3">文摘</a>
+                        <a class="tag-item" data-id="4">诗歌</a>
+                        <a class="tag-item" data-id="5">教程</a>
+                        <a class="tag-item" data-id="6">影评</a>
+                        <a class="tag-item" data-id="7">乐评</a>
+                    </div>
+                </div>
+                <input type="submit" class="publish-btn" value="发布">
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+
+<script>
+    $(function () {
+
+        /*检测登录*/
+        check_login();
+
+        var i=0;
+        var _this="";
+        $('.tags-recommend').on('click','a',function () {
+            _this = this;
+            /*判断添加的标签数目*/
+            if($('.tags-wrap a').length>0) {alert('只能选择一个标签');return;}
+            else {(i++);$('.tags-count').text(i+"/1");}
+
+            /*添加标签*/
+            $('.tag-input').before($(_this));
+            $('.tag-input').attr("data-id",$(_this).attr("data-id"));
+        });
+
+        $('.tags-wrap').on('click','a',function () {
+            i--;
+            $('.tags-count').text(i+"/1");
+            /*移除标签*/
+            $('.tags-recommend').append($(this));
+        })
+    })
+</script>
+
+
+<script>
+
+    /*编辑器*/
+    $(function(){
+        $('#edit').editable({inlineMode: false})
+    });
+
+
+    /*文章发布*/
+    function article_publish(){
+        var content = $(".froala-element").html();
+        var articleTitle = $(".m-input").val();
+        var articleTags = $(".tag-input").attr("data-id");
+        $.ajax({
+            url:'/INC/NewArticle.do',
+            type:"post",
+            data:{
+                'content':content,
+                'articleTitle':articleTitle,
+                'articleTags':articleTags
+            }
+        }).then(function(data){
+
+            if(data[0].result)
+            {
+                alert("发布成功！");
+                location.href="inc-article.html";
+            }
+            else
+            {
+
+            }
+        });
+    }
+
+    $(".publish-btn").click(function () {
+        article_publish();
+        return false;
+    });
+</script>
+</html>

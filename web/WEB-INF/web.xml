@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>CheckLogin</servlet-name>
+        <servlet-class>controller.CheckLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckLogin</servlet-name>
+        <url-pattern>/CheckLogin.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>controller.Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>controller.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Everyday_selection</servlet-name>
+        <servlet-class>controller.Everyday_selection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Everyday_selection</servlet-name>
+        <url-pattern>/Everyday_selection.do</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Hottest_article</servlet-name>
+        <servlet-class>controller.Hottest_article</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Hottest_article</servlet-name>
+        <url-pattern>/Hottest_article.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Hottest_photo</servlet-name>
+        <servlet-class>controller.Hottest_photo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Hottest_photo</servlet-name>
+        <url-pattern>/Hottest_photo.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Myphoto</servlet-name>
+        <servlet-class>controller.Myphoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Myphoto</servlet-name>
+        <url-pattern>/Myphoto.do</url-pattern>
+    </servlet-mapping>
+
+    <!--其他用户的个人主页-->
+    <servlet>
+        <servlet-name>Otherphoto</servlet-name>
+        <servlet-class>controller.Otherphoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Otherphoto</servlet-name>
+        <url-pattern>/Otherphoto.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Myarticle</servlet-name>
+        <servlet-class>controller.Myarticle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Myarticle</servlet-name>
+        <url-pattern>/Myarticle.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Myinformation</servlet-name>
+        <servlet-class>controller.Myinformation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Myinformation</servlet-name>
+        <url-pattern>/Myinformation.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Allcomment</servlet-name>
+        <servlet-class>controller.Allcomment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Allcomment</servlet-name>
+        <url-pattern>/Allcomment.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Alllike</servlet-name>
+        <servlet-class>controller.Alllike</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Alllike</servlet-name>
+        <url-pattern>/Alllike.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewArticle</servlet-name>
+        <servlet-class>controller.NewArticle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewArticle</servlet-name>
+        <url-pattern>/NewArticle.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewPhoto</servlet-name>
+        <servlet-class>controller.NewPhoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewPhoto</servlet-name>
+        <url-pattern>/NewPhoto.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Mycomment</servlet-name>
+        <servlet-class>controller.Mycomment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Mycomment</servlet-name>
+        <url-pattern>/Mycomment.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Mylike</servlet-name>
+        <servlet-class>controller.Mylike</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Mylike</servlet-name>
+        <url-pattern>/Mylike.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Photo_show</servlet-name>
+        <servlet-class>controller.Photo_show</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Photo_show</servlet-name>
+        <url-pattern>/Photo_show.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Article_show</servlet-name>
+        <servlet-class>controller.Article_show</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Article_show</servlet-name>
+        <url-pattern>/Article_show.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ArticleComment</servlet-name>
+        <servlet-class>controller.ArticleComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArticleComment</servlet-name>
+        <url-pattern>/ArticleComment.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PhotoComment</servlet-name>
+        <servlet-class>controller.PhotoComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PhotoComment</servlet-name>
+        <url-pattern>/PhotoComment.do</url-pattern>
+    </servlet-mapping>
+
+
+    <!--注册UploadHandleServlet(图片上传)-->
+    <servlet>
+        <servlet-name>UploadHandleServlet</servlet-name>
+        <servlet-class>controller.UploadHandleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadHandleServlet</servlet-name>
+        <url-pattern>/UploadHandleServlet.do</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+</web-app>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>站内通知</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/inc-massage-main.css">
+
+</head>
+<body>
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="massage-content">
+        <div class="massage-title tab-title">
+            <a href="javascript:;" class="tab-item active-tab">评论</a>
+            <a href="javascript:;" class="tab-item">喜欢</a>
+            <a href="javascript:;" class="tab-item">通知</a>
+        </div>
+        <div class="tab-cont">
+            <ul class="tab-cont__wrap">
+                <!--评论选项-->
+                <ul class="massage-list item">
+                    <!--每一个消息通知-->
+
+                </ul>
+                <!--喜欢选项-->
+                <ul class="like-list item">
+                    <!--每一个喜欢通知-->
+                </ul>
+                <!--通知选项-->
+                <ul class="notice-list item">
+                    <li>
+                        <!--留言者头像-->
+                        <a class="user-icon" href="inc-user.html">
+                            <img src="assets/img/user/user01.jpg">
+                        </a>
+                        <!--评论信息来源和评论标题-->
+                        <p class="massage-haed">
+                            <a href="inc-user.html">aboge</a>
+                            给我留言
+                        </p>
+                        <!--留言内容-->
+                        <p>你的作品真棒！可以教教我吗？</p>
+                        <!--留言时间-->
+                        <time>2016年12月9日</time>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="over-auto" style="height: 116px;">
+        <div class="fl footer-fluid">
+            <p class="fluid-title">关于我们</p>
+            <!--inc网站介绍-->
+            <div class="fluid-content inc-desc">
+                已经有上万的各类兴趣爱好者入驻了兴趣圈<br>
+                在这里，发现基于共同兴趣的同好，鼓励原创和分享精神
+                除了美好的作品和技能，我们更在意每一件分享作品背后价值观的认同
+            </div>
+        </div>
+        <div class="fr footer-fluid text-center">
+            <p class="fluid-title"> 关注兴趣圈 </p>
+            <!--INC流媒体内容-->
+            <div class="fluid-content">
+                <!--微信小logo-->
+                <div class="qrcode-parallel">
+                    <div  class="link-logo wechat">
+                        <a>
+                            <i class="icon-wechat"></i>
+                        </a>
+                    </div>
+                    <!--微信二维码-->
+                    <a class="qrcodewechat"></a>
+                </div>
+                <!--INC微博-->
+                <div class="link-logo">
+                    <a href="http://weibo.com/u/3866605448" target="_blank"><i class="icon-weibo"></i></a>  <!--在新窗口跳转打开微博页面-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-auto inc-detail">
+        <div class="footer-left">
+            <span>&copy;2017 inc.com</span>
+            <span>ABOGE版权所有</span>
+
+            <div class="slash-list">
+                <a href="" class="slash-item"><i>用户协议</i></a>
+                <a href="" class="slash-item"><i>友情链接</i></a>
+            </div>
+        </div>
+        <div class="footer-right slash-list">
+            <a class="slash-item" href=""><i>关于</i></a>
+            <a class="slash-item" href=""><i>联系</i></a>
+            <a class="slash-item" href=""><i>加入我们</i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/jquery-3.2.1.js"></script>
+<script src="assets/js/tab-change.js"></script>
+<!--检测每个页面是否为当前登录用户-->
+<script src="assets/js/CheckUser.js"></script>
+
+<script>
+    $(function () {
+        /*检测登录*/
+        check_login();
+
+        /*评论显示*/
+        function all_comment_show(){
+
+            var url="/INC/Allcomment.do";
+
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+                    var href='';
+                    for(var i=0;i<data.list.length;i++){
+                        if(data.list[i].type=="1") href='works-article-show.html?id='+data.list[i].worksid;
+                        else href='works-photo-show.html?id='+data.list[i].worksid;
+
+                        html+='<li><a class="user-icon" href="inc-other-user.html?username='+data.list[i].username+'"><img src="assets/img/user/'+data.list[i].avatar+'">' +
+                            '</a><p class="massage-haed"><a href="inc-other-user.html?username='+data.list[i].username+'">'+data.list[i].username+'</a>在你的' +
+                            '<a href="'+href+'">'+data.list[i].title+'</a>中评论</p>' +
+                            '<p>'+data.list[i].message+'</p><time>'+FormatTime(data.list[i].publishTime)+'</time></li>';
+                    }
+
+                    $(".massage-list").html(html);
+
+                }
+            });
+        }
+        /*评论显示*/
+        all_comment_show();
+
+        /*喜欢显示*/
+        function all_like_show(){
+
+            var url="/INC/Alllike.do";
+
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+                    var _href='';
+                    for(var i=0;i<data.list.length;i++){
+                        if(data.list[i].type=="1") _href='works-article-show.html?id='+data.list[i].worksid;
+                        else _href='works-photo-show.html?id='+data.list[i].worksid;
+
+                        html+='<li><a class="user-icon" href="inc-other-user.html?username='+data.list[i].username+'"><img src="assets/img/user/'+data.list[i].avatar+'"></a>' +
+                            '<p class="massage-haed"><a href="inc-other-user.html?username='+data.list[i].username+'">'+data.list[i].username+'</a>喜欢了我的' +
+                            '<a href="'+_href+'">'+data.list[i].title+'</a></p><time>'+FormatTime(data.list[i].agreeTime)+'</time></li>';
+                    }
+
+                    $(".like-list").html(html);
+
+                }
+            });
+        }
+        /*喜欢显示*/
+        all_like_show();
+
+
+
+        /*获取当前窗口的url，并用split在"？"切开，接着获取其后面的字符串的内容*/
+        var msg=window.location.href.split('?')[1].split('=')[1]||1;
+
+        $('.massage-content').tab({
+            curDisplay: msg
+        });
+
+    });
+
+    /*时间转换*/
+    function FormatTime(date){
+        var now = new Date(Number(date));
+        var year=now.getFullYear();
+        var month=now.getMonth()+1;
+        if(month<10)
+            month="0"+month;
+        var day=now.getDate();
+        if(day<10)
+            day="0"+day;
+        var hour=now.getHours();
+        if(hour<10)
+            hour="0"+hour;
+        var sec=now.getSeconds();
+        if(sec<10)
+            sec="0"+sec;
+        var min=now.getMinutes();
+        if(min<10)
+            min="0"+min;
+        return year + '-' +month + '-' + day;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INC-文章展示页面</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/inc-article-main.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+
+    <style>
+        body{
+            min-width: 1110px;
+        }
+    </style>
+</head>
+<body>
+<!--页眉-->
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a class="active" href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--文章分类导航栏-->
+<nav class="title-choose">
+    <ul>
+        <li><a href="javascript:;" class="title-active" id="1">随笔</a></li>
+        <li><a href="javascript:;" id="2">散文</a></li>
+        <li><a href="javascript:;" id="3">文摘</a></li>
+        <li><a href="javascript:;" id="4">诗歌</a></li>
+        <li><a href="javascript:;" id="5">教程</a></li>
+        <li><a href="javascript:;" id="6">影评</a></li>
+        <li><a href="javascript:;" id="7">乐评</a></li>
+    </ul>
+</nav>
+<!--文章展示-->
+<main>
+    <div id="article-content">
+
+    </div>
+    <div class="load-more-wrapper loaded"><a href="javascript:;" class="load-more">
+        加载更多
+    </a></div>
+</main>
+<!--返回顶部-->
+<div style="display:none;" id="gotopbtn" class="to_top"><a title="返回顶部" href="javascript:void(0);"></a></div>
+<!--页脚-->
+<footer>
+    <div class="over-auto" style="height: 116px;">
+        <div class="fl footer-fluid">
+            <p class="fluid-title">关于我们</p>
+            <!--inc网站介绍-->
+            <div class="fluid-content inc-desc">
+                已经有上万的各类兴趣爱好者入驻了兴趣圈<br>
+                在这里，发现基于共同兴趣的同好，鼓励原创和分享精神
+                除了美好的作品和技能，我们更在意每一件分享作品背后价值观的认同
+            </div>
+        </div>
+        <div class="fr footer-fluid text-center">
+            <p class="fluid-title"> 关注兴趣圈 </p>
+            <!--INC流媒体内容-->
+            <div class="fluid-content">
+                <!--微信小logo-->
+                <div class="qrcode-parallel">
+                    <div  class="link-logo wechat">
+                        <a>
+                            <i class="icon-wechat"></i>
+                        </a>
+                    </div>
+                    <!--微信二维码-->
+                    <a class="qrcodewechat"></a>
+                </div>
+                <!--INC微博-->
+                <div class="link-logo">
+                    <a href="http://weibo.com/u/3866605448" target="_blank"><i class="icon-weibo"></i></a>  <!--在新窗口跳转打开微博页面-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-auto inc-detail">
+        <div class="footer-left">
+            <span>&copy;2017 inc.com</span>
+            <span>ABOGE版权所有</span>
+
+            <div class="slash-list">
+                <a href="" class="slash-item"><i>用户协议</i></a>
+                <a href="" class="slash-item"><i>友情链接</i></a>
+            </div>
+        </div>
+        <div class="footer-right slash-list">
+            <a class="slash-item" href=""><i>关于</i></a>
+            <a class="slash-item" href=""><i>联系</i></a>
+            <a class="slash-item" href=""><i>加入我们</i></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<!--检测每个页面是否为当前登录用户-->
+<script src="assets/js/CheckUser.js"></script>
+
+<script>
+
+    $(function(){
+        var schType= 1;
+        var page = 1;
+        /*检测登录*/
+        check_login();
+        $(".load-more").click(function () {
+            page = page+1;
+            all_article_show(schType);
+        });
+        /*每一篇文章显示*/
+        function all_article_show(type){
+            schType = type;
+            var url="/INC/Hottest_article.do?type="+type;
+
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+                    var like="";
+                    for(var i=0;i<page*5&&i<data.list.length;i++){
+                        if(data.list[i].tag==0) like="";
+                        else like="red_likes";
+                        html+='<dl class="article-card"><dt><div class="user-card block"><a href="inc-other-user.html?username='+data.list[i].username+'" class="user-avater">' +
+                            '<img src="assets/img/user/'+data.list[i].avatar+'" alt="'+data.list[i].username+'"></a><h4><a href="inc-other-user.html?username='+data.list[i].username+'">'+data.list[i].username+'</a></h4><time>'+FormatTime(data.list[i].publishTime)+'</time>' +
+                            '</div></dt><dd><section><h3 class="title"><a href="works-article-show.html?id='+data.list[i].idinc_article_works+'" class="">'+data.list[i].artitcletitle+'</a></h3>' +
+                            '<summary class="desc">'+data.list[i].content+'</summary>' +
+                            '</section><div class="meta"><div class="item_b clearfix"><div class="items_likes fl">' +
+                            '<span class="like_btn '+like+'" style="cursor:pointer;"></span><em class="bold" data-id="'+data.list[i].idinc_article_works+'">'+data.list[i].agreenumber+'</em></div><div class="items_comment fr">' +
+                            '<a href="works-article-show.html?id='+data.list[i].idinc_article_works+'" class="comment_btn"></a><em class="bold" data-id="'+data.list[i].idinc_article_works+'">'+data.list[i].commentnumber+'</em></div></div></div></dd></dl>';
+
+                        if(i==data.list.length-1){
+                            $(".load-more").html("木有更多了！");
+                            $(".load-more").unbind("click");
+
+                        }
+                    }
+
+                    $("#article-content").html(html);
+
+                    /*点赞按钮*/
+                    $(".like_btn").click(function () {
+                        var _this=$(this);
+                        if($(this).hasClass('red_likes')) {
+                            $(this).next().text(parseInt($(this).next().text()) - 1);
+                            $(this).removeClass('red_likes');
+                            $.ajax({
+                                url: "/INC/Hottest_article.do",
+                                type: "post",
+                                data: {
+                                    'action':"delete",
+                                    'articleId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                        else {
+                            $(this).next().text(parseInt($(this).next().text())+1);
+                            $(this).addClass('red_likes');
+                            $.ajax({
+                                url: "/INC/Hottest_article.do",
+                                type: "post",
+                                data: {
+                                    'action':"add",
+                                    'articleId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                    })
+
+                }
+            });
+        }
+        /*文章显示*/
+        all_article_show($(".title-active").attr("id"));
+
+        $('.title-choose a').click(function () {
+           $('.title-choose a').removeClass('title-active');
+           $(this).addClass('title-active');
+            all_article_show($(".title-active").attr("id"));
+        });
+
+        /*回到页顶*/
+        $(window).scroll(function(){
+            $(window).scrollTop()>1000 ? $("#gotopbtn").css('display','').click(function(){
+                $(window).scrollTop(0);
+            }):$("#gotopbtn").css('display','none');
+        });
+
+    });
+
+    /*时间转换*/
+    function FormatTime(date){
+        var now = new Date(Number(date));
+        var year=now.getFullYear();
+        var month=now.getMonth()+1;
+        if(month<10)
+            month="0"+month;
+        var day=now.getDate();
+        if(day<10)
+            day="0"+day;
+        var hour=now.getHours();
+        if(hour<10)
+            hour="0"+hour;
+        var sec=now.getSeconds();
+        if(sec<10)
+            sec="0"+sec;
+        var min=now.getMinutes();
+        if(min<10)
+            min="0"+min;
+        return year + '-' +month + '-' + day;
+    }
+</script>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INC</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link href=assets/css/inc-home-main.css rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/pageSwitch.min.css">  <!--轮播图css-->
+    <!--<script src="assets/js/pageSwitch.min.js"></script>-->           <!--轮播图jq-->
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+
+</head>
+<body>
+<!--网站顶部-->
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a class="active" href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--中间展示区-->
+<main>
+    <!--轮播图-->
+    <div class="Carousel figure" id="container">
+        <div class="sections">
+            <div class="section" id="section0"></div>
+            <div class="section" id="section1"></div>
+            <div class="section" id="section2"></div>
+            <div class="section" id="section3"></div>
+        </div>
+    </div>
+
+    <!--每日精选-->
+    <div class="everyday-selection">
+        <div id="everyday-selection">
+            <div class="works-picture">
+                <img src="assets/img/workers.jpg">
+            </div>
+            <div class="everyday-selection-border">
+                <div class="works-information">
+                    <article>
+                        <h1>每日精选</h1>
+                        <p class="time"></p>
+                        <a href="works-photo-show.html?photoid=1" id="works-title"></a>
+                        <div id="works-content">
+                            <a id="everyday-selection-href" href=""><p id="content"></p></a>
+                        </div>
+                        <div class="works-author">
+                            <a href="" id="author-page">
+                                <img src="" id="authoravatar">
+                                <span id="authorname"></span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--24小时最热-->
+    <div class="hottest">
+        <!--最热图博-->
+        <div class="hottest-photo">
+            <!--标题下的底纹图片-->
+            <div class="under-title-photo blur"></div>
+            <!--9张图片展示区-->
+            <div class="show-photo">
+                <div class="hottest-photo-title-all">
+                    <div class="hottest-photo-title"><h1>24小时最热图博</h1></div>
+                    <div id="photo-xiantiao-all">
+                        <div class="xiantiao-left"></div><div class="xiantiao-right"></div>
+                    </div>
+                </div>
+                <div id="show-photo-list">
+                    <ul class="show-photo-list">
+
+                    </ul>
+                </div>
+            </div>
+            <!--展示区下的底纹图片-->
+            <!--<div class="under-show-photo"></div>-->
+
+        </div>
+        <!--最热文博-->
+        <div class="hottest-article">
+            <!--标题下的底纹图片-->
+            <div class="under-title-photo blur"></div>
+            <!--最热文博-->
+            <div class="show-article">
+                <div class="hottest-article-title-all">
+                    <div class="hottest-article-title"><h1>24小时最热文博</h1></div>
+                    <div id="article-xiantiao-all">
+                        <div class="xiantiao-left"></div><div class="xiantiao-right"></div>
+                    </div>
+                </div>
+                <div>
+                    <ul id="hot-articlelist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--返回顶部-->
+<div style="display:none;" id="gotopbtn" class="to_top"><a title="返回顶部" href="javascript:void(0);"></a></div>
+<!--网页页脚-->
+<footer>
+    <div class="over-auto" style="height: 116px;">
+        <div class="fl footer-fluid">
+            <p class="fluid-title">关于我们</p>
+            <!--inc网站介绍-->
+            <div class="fluid-content inc-desc">
+                已经有上万的各类兴趣爱好者入驻了兴趣圈<br>
+                在这里，发现基于共同兴趣的同好，鼓励原创和分享精神
+                除了美好的作品和技能，我们更在意每一件分享作品背后价值观的认同
+            </div>
+        </div>
+        <div class="fr footer-fluid text-center">
+            <p class="fluid-title"> 关注兴趣圈 </p>
+            <!--INC流媒体内容-->
+            <div class="fluid-content">
+                <!--微信小logo-->
+                <div class="qrcode-parallel">
+                    <div  class="link-logo wechat">
+                        <a>
+                            <i class="icon-wechat"></i>
+                        </a>
+                    </div>
+                    <!--微信二维码-->
+                    <a class="qrcodewechat"></a>
+                </div>
+                <!--INC微博-->
+                <div class="link-logo">
+                    <a href="http://weibo.com/u/3866605448" target="_blank"><i class="icon-weibo"></i></a>  <!--在新窗口跳转打开微博页面-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-auto inc-detail">
+        <div class="footer-left">
+            <span>&copy;2017 inc.com</span>
+            <span>ABOGE版权所有</span>
+
+            <div class="slash-list">
+                <a href="" class="slash-item"><i>用户协议</i></a>
+                <a href="" class="slash-item"><i>友情链接</i></a>
+            </div>
+        </div>
+        <div class="footer-right slash-list">
+            <a class="slash-item" href=""><i>关于</i></a>
+            <a class="slash-item" href=""><i>联系</i></a>
+            <a class="slash-item" href=""><i>加入我们</i></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script src="assets/js/pageSwitch.min.js"></script>
+<!--检测每个页面是否为当前登录用户-->
+<script src="assets/js/CheckUser.js"></script>
+
+<script>
+
+    $(function(){
+
+        /*检测登录*/
+        check_login();
+
+        /*每日精选内容ajax请求*/
+        function everyday_selection() {
+            $.ajax({
+                url: '/INC/Everyday_selection.do',
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    $(".time").text(FormatTime(data.list[0].publishTime));
+                    $(".works-title").html("<h2>"+data.list[0].artitcletitle+"</h2>");
+                    $("#content").html(data.list[0].content);
+                    $("#everyday-selection-href").attr("href","works-article-show.html?id="+data.list[0].idinc_article_works);
+                    $("#authoravatar").attr("src","assets/img/user/"+data.list[0].avatar);
+                    $("#authorname").text(data.list[0].username);
+                    $("#author-page").attr("href","inc-other-user.html?username="+data.list[0].username);
+                }
+            });
+        }
+        /*每日精选内容请求*/
+        everyday_selection();
+
+        /*24小时最热文博*/
+        function hottest_article() {
+            $.ajax({
+                url: '/INC/Hottest_article.do',
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+
+                    var like="";
+                    for(var i=0;i<data.list.length;i++){
+                        if(data.list[i].tag==0) like="";
+                        else like="red_likes";
+                        html+='<li><dl class="article-card"><dt><div class="user-card block">' +
+                            '<a href="inc-other-user.html?username='+data.list[i].username+'" class="user-avater"><img src="assets/img/user/'+data.list[i].avatar+'" alt="'+data.list[i].username+'"></a>' +
+                            '<h4><a href="inc-other-user.html?username='+data.list[i].username+'">'+data.list[i].username+'</a></h4><time>'+FormatTime(data.list[i].publishTime)+'</time></div></dt><dd>' +
+                            '<section><h3 class="title"><a class="" href="works-article-show.html?id='+data.list[i].idinc_article_works+'">'+data.list[i].artitcletitle+'</a>' +
+                            '</h3><summary class="desc"><a class="" href="works-article-show.html?id='+data.list[i].idinc_article_works+'">'+data.list[i].content+'</a></summary></section>' +
+                            '<div class="meta"><div class="item_b clearfix"><div class="items_likes fl"><span class="like_btn '+like+'" style="cursor:pointer;"></span>' +
+                            '<em class="bold" data-id="'+data.list[i].idinc_article_works+'">'+data.list[i].agreenumber+'</em></div><div class="items_comment fr">' +
+                            '<a href="works-article-show.html?id='+data.list[i].idinc_article_works+'" class="comment_btn"></a><em class="bold" data-id="'+data.list[i].idinc_article_works+'">'+data.list[i].commentnumber+'</em></div></div></div></dd></dl></li>';
+                    }
+                    //alert(data.list.length);
+
+                    $("#hot-articlelist").html(html);
+
+
+                    /*点赞按钮*/
+                    $(".like_btn").click(function () {
+                        var _this=$(this);
+                        if($(this).hasClass('red_likes')) {
+                            $(this).next().text(parseInt($(this).next().text()) - 1);
+                            $(this).removeClass('red_likes');
+                            $.ajax({
+                                url: "/INC/Hottest_article.do",
+                                type: "post",
+                                data: {
+                                    'action':"delete",
+                                    'articleId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                        else {
+                            $(this).next().text(parseInt($(this).next().text())+1);
+                            $(this).addClass('red_likes');
+                            $.ajax({
+                                url: "/INC/Hottest_article.do",
+                                type: "post",
+                                data: {
+                                    'action':"add",
+                                    'articleId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                    });
+
+                }
+            });
+        }
+        /*24小时最热文博*/
+        hottest_article();
+
+
+
+        /*24小时最热图博*/
+        function hottest_photo() {
+            $.ajax({
+                url: '/INC/Hottest_photo.do',
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+
+                    for(var i=0;i<9;i++){
+                        console.log(i%3);
+                        if(i%3==0)
+                            html+='<ul class="photo-list">';
+
+                        html+='<li class="photo-item"><div class="hovereffect">' +
+                                '<a href="works-photo-show.html"><img class="img-responsive" src="assets/images/pic/'+data.list[i].photoname+'" style="height: 316px;width:316px;"></a>' +
+                                '<div class="overlay"><h2>'+data.list[i].photostitle+'</h2><p><a href="works-photo-show.html?id='+data.list[i].idinc_photo_works+'">查看详情</a>' +
+                                '</p></div></div></li>';
+
+                        if(i%3==2)
+                            html+='</ul>';
+                    }
+                    //alert(data.list.length);
+
+                    $("#show-photo-list").html(html);
+
+
+                }
+            });
+        }
+        /*24小时最热图博*/
+        hottest_photo();
+
+        //初始化该轮播图插件
+        $("#container").PageSwitch({
+            direction:'horizontal',
+            easing:'ease-in',
+            duration:1000,
+            autoPlay:true,
+            loop:'false'
+        });
+
+        /*回到页顶*/
+        $(window).scroll(function(){
+            $(window).scrollTop()>1000 ? $("#gotopbtn").css('display','').click(function(){
+                $(window).scrollTop(0);
+            }):$("#gotopbtn").css('display','none');
+        });
+
+    });
+
+    /*时间转换*/
+    function FormatTime(date){
+        var now = new Date(Number(date));
+        var year=now.getFullYear();
+        var month=now.getMonth()+1;
+        if(month<10)
+            month="0"+month;
+        var day=now.getDate();
+        if(day<10)
+            day="0"+day;
+        var hour=now.getHours();
+        if(hour<10)
+            hour="0"+hour;
+        var sec=now.getSeconds();
+        if(sec<10)
+            sec="0"+sec;
+        var min=now.getMinutes();
+        if(min<10)
+            min="0"+min;
+        return year + '-' +month + '-' + day;
+    }
+</script>
+</html>

@@ -1,0 +1,10 @@
+/*按钮默认颜色为white*/
+.pages li{list-style-type:none;width:10px;height:10px;border-radius:10px;background-color:white}
+/*当鼠标放到按钮上时阴影为灰色*/
+.pages li:hover{box-shadow:0 0 5px 2px #9d9d9d}
+/*当页面播放到当前页面时按钮变成黑色，阴影变成灰色*/
+.pages li.active{background-color:#222222;box-shadow:0 0 5px 2px #9d9d9d}
+.pages{position:absolute;z-index:999}.pages.horizontal{left:50%;transform:translateX(-50%);bottom:5px}
+.pages.horizontal li{display:inline-block;margin-right:10px}
+.pages.horizontal li:last-child{margin-right:0}.pages.vertical{right:5px;top:50%;transform:translateY(-50%)}
+.pages.vertical li{margin-bottom:10px}.pages.vertical li:last-child{margin-bottom:0}

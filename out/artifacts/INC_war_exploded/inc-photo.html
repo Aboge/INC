@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INC-影像展示</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link href=assets/css/inc-photo-main.css rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.masonry.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.infinitescroll.js"></script>
+
+    <link rel="stylesheet" href="assets/css/inc-photo-page.css">
+
+    <script type="text/javascript">
+        var isWidescreen=screen.width>=1280;
+        if(isWidescreen){document.write("<style type='text/css'>.demo{width:1194px;}</style>");}
+        else {document.write("<style type='text/css'>.demo{width:1000px;}</style>");}
+    </script>
+
+</head>
+
+<body>
+<!--网站顶部-->
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a class="active" href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <!--热门和最新的分类导航-->
+    <div class="selection-hottest">
+        <div id="selection-hottest">
+            <div class="works-picture">
+                <img src="assets/img/workers.jpg">
+            </div>
+            <div class="selection-hottest-border">
+                <div class="selection-hottest-button">
+                    <div class="selection-hottest-choose">
+                        <ul>
+                            <li class="choose-hottest"><a href="javascript:;"><h1 style="color: red">热门</h1></a></li><li class="choose-selection">
+                            <a href="javascript:;"><h1>最新</h1></a></li>
+                        </ul>
+                    </div>
+                    <div class="selection-hottest-title">
+                        <ul>
+                            <li><a href="javascript:;" id="1">人像</a></li><li>
+                            <a href="javascript:;" id="2">风光</a></li><li>
+                            <a href="javascript:;" id="3">街拍</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="javascript:;" id="4">城市</a></li><li>
+                            <a href="javascript:;" id="5">校园</a></li><li>
+                            <a href="javascript:;" id="6">旅行</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="javascript:;" id="7">记实</a></li><li>
+                            <a href="javascript:;" id="8">色彩</a></li><li>
+                            <a href="javascript:;" id="9">手机</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="javascript:;" id="10">黑白</a></li><li>
+                            <a href="javascript:;" id="11">胶片</a></li><li>
+                            <a href="javascript:;" id="12">抓拍</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--瀑布流显示的内容-->
+    <div class="demo clearfix">
+
+        <div id="container" class="item_list infinite_scroll grid" style="position: relative;height: auto;" >
+            <!--瀑布流内容-->
+        </div>
+
+    </div>
+
+</main>
+
+<div style="display:none;" id="gotopbtn" class="to_top"><a title="返回顶部" href="javascript:void(0);"></a></div>
+
+<footer>
+    <div class="over-auto" style="height: 116px;">
+        <div class="fl footer-fluid">
+            <p class="fluid-title" style="margin-top: 21px">关于我们</p>
+            <!--inc网站介绍-->
+            <div class="fluid-content inc-desc">
+                已经有上万的各类兴趣爱好者入驻了兴趣圈<br>
+                在这里，发现基于共同兴趣的同好，鼓励原创和分享精神
+                除了美好的作品和技能，我们更在意每一件分享作品背后价值观的认同
+            </div>
+        </div>
+        <div class="fr footer-fluid text-center">
+            <p class="fluid-title"> 关注兴趣圈 </p>
+            <!--INC流媒体内容-->
+            <div class="fluid-content">
+                <!--微信小logo-->
+                <div class="qrcode-parallel">
+                    <div  class="link-logo wechat">
+                        <a>
+                            <i class="icon-wechat"></i>
+                        </a>
+                    </div>
+                    <!--微信二维码-->
+                    <a class="qrcodewechat"></a>
+                </div>
+                <!--INC微博-->
+                <div class="link-logo">
+                    <a href="http://weibo.com/u/3866605448" target="_blank"><i class="icon-weibo"></i></a>  <!--在新窗口跳转打开微博页面-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-auto inc-detail">
+        <div class="footer-left">
+            <span>&copy;2017 inc.com</span>
+            <span>ABOGE版权所有</span>
+
+            <div class="slash-list">
+                <a href="" class="slash-item"><i>用户协议</i></a>
+                <a href="" class="slash-item"><i>友情链接</i></a>
+            </div>
+        </div>
+        <div class="footer-right slash-list">
+            <a class="slash-item" href=""><i>关于</i></a>
+            <a class="slash-item" href=""><i>联系</i></a>
+            <a class="slash-item" href=""><i>加入我们</i></a>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script src="assets/js/minigrid.js"></script>
+
+<!--检测每个页面是否为当前登录用户-->
+<script src="assets/js/CheckUser.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+
+        /*检测登录*/
+        check_login();
+
+        /*瀑布流显示*/
+        function all_photos_show(type){
+            if(type==undefined){
+                var url="/INC/Hottest_photo.do";
+            }else{
+                var url="/INC/Hottest_photo.do?type="+type;
+            }
+
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+
+                    var html='';
+                    var like="";
+                    for(var i=0;i<data.list.length;i++){
+                        if(data.list[i].tag==0) like="";
+                        else like="red_likes";
+                        html+='<div class="grid-item item masonry_brick"><div class="item_t"><div class="img">' +
+                            '<a href="works-photo-show.html?id='+data.list[i].idinc_photo_works+'"><img src="assets/images/pic/'+data.list[i].photoname+'" /></a><div class="overlay">' +
+                            '<a href="works-photo-show.html?id='+data.list[i].idinc_photo_works+'" class="img-title"><h2>'+data.list[i].photostitle+'</h2></a><p><a href="works-photo-show.html?id='+data.list[i].idinc_photo_works+'">'+data.list[i].photointroduction+'</a>' +
+                            '</p></div></div></div><div class="item_b clearfix"><div class="works-author"><a href="inc-other-user.html?username='+data.list[i].username+'">' +
+                            '<img src="assets/img/user/'+data.list[i].avatar+'" alt="'+data.list[i].username+'">'+data.list[i].username+'</a></div>' +
+                            '<div class="items_comment fr"> <a href="works-photo-show.html?id='+data.list[i].idinc_photo_works+'" class="comment_btn"></a>' +
+                            '<em class="bold" data-id="'+data.list[i].idinc_photo_works+'">'+data.list[i].commentnumber+'</em></div>' +
+                            '<div class="items_likes fl"><span class="like_btn '+like+'" style="cursor:pointer;"></span><em class="bold" data-id="'+data.list[i].idinc_photo_works+'">'+data.list[i].agreenumber+'</em></div></div></div>';
+                    }
+
+                    $("#container").html(html);
+
+                    /*瀑布流展示jq*/
+                    (function(){
+                        minigrid('.grid', '.grid-item', 6, null,
+                            function(){
+                                var d = document.querySelector('.demo');
+                                d.style.opacity = 1;
+                            }
+                        );
+                        window.addEventListener('resize', function(){
+                            minigrid('.grid', '.grid-item');
+                        });
+                    })();
+
+                    /*点赞按钮*/
+                    $(".like_btn").click(function () {
+                        var _this=$(this);
+                        /*判断当前作品是否已经被当前用户点赞变成红色，若是再次点击去处红心，并改变数据库点赞表*/
+                        if($(this).hasClass('red_likes')) {
+                            $(this).next().text(parseInt($(this).next().text()) - 1);
+                            $(this).removeClass('red_likes');
+
+                            $.ajax({
+                                url: "/INC/Hottest_photo.do",
+                                type: "post",
+                                data: {
+                                    'action':"delete",
+                                    'photoId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                        /*当前用户没有被点赞，则第一次点击时变红，后台数据库点赞表增1*/
+                        else {
+                            $(this).next().text(parseInt($(this).next().text())+1);
+                            $(this).addClass('red_likes');
+                            $.ajax({
+                                url: "/INC/Hottest_photo.do",
+                                type: "post",
+                                data: {
+                                    'action':"add",
+                                    'photoId':_this.next().attr("data-id")
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            })
+                        }
+                    })
+
+
+                }
+            });
+        }
+        /*瀑布流显示*/
+        all_photos_show();
+
+        $('.choose-hottest').click(function () {
+            $('.selection-hottest-title a').css("color", "");
+            $('.choose-selection').find('h1').css("color", "");
+            $(this).find('h1').css("color", "red");
+            all_photos_show("hottest");
+        });
+        $('.choose-selection').click(function () {
+            $('.selection-hottest-title a').css("color", "");
+            $('.choose-hottest').find('h1').css("color", "");
+            $(this).find('h1').css("color", "red");
+            all_photos_show("latest");
+        });
+        $('.selection-hottest-title a').click(function () {
+            $('.choose-hottest,.choose-selection').find('h1').css("color", "");
+            $('.selection-hottest-title a').css("color", "");
+            $(this).css("color", "red");
+            all_photos_show($(this).attr('id'));
+        });
+
+
+        /*返回页顶*/
+        $(window).scroll(function(){
+            $(window).scrollTop()>1000 ? $("#gotopbtn").css('display','').click(function(){
+                    $(window).scrollTop(0);
+                }):$("#gotopbtn").css('display','none');
+        });
+
+
+
+    });
+
+</script>
+</html>

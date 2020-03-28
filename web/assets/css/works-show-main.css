@@ -1,0 +1,223 @@
+main{
+    display: block;
+    min-height: 300px;
+}
+/*展示区样式*/
+.content {
+    width: 824px;
+    padding: 0 60px;
+    margin: 26px auto 0;
+    background-color: #fff;
+    font-size: 14px;
+}
+/*标题*/
+.content .post-head {
+    padding: 20px 0;
+}
+.content .post-head .post-title {
+    margin: 40px 0 0;
+    font-size: 32px;
+    font-weight: 600;
+}
+.content .post-head .post-time{
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: #85888a;
+}
+/*作者信息*/
+.content .post-head .post-info {
+    position: relative;
+    margin-top: 40px;
+    font-size: 0;
+}
+/*头像*/
+.content .post-head .post-info .site-icon img{
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+/*名字*/
+.content .post-head .post-info .site-link {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #222;
+    vertical-align: middle;
+}
+
+                                    /*文章/图片内容*/
+.content .post-content {
+    font-size: 16px;
+    line-height: 1.75;
+}
+.content .post-content p{
+    margin: 20px 0 0;
+    word-break: break-all;
+}
+.content .photos .photos-list li{
+    max-width: 704px;
+}
+.content .photos .photos-list .photo-item{
+    width: 704px;
+    height: auto;
+}
+
+.content .photos .photos-list .photo-item-max{
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    z-index: 2;
+}
+
+                                    /*点赞区*/
+.content .post-actions {
+    position: relative;
+    margin-top: 40px;
+    padding-bottom: 20px;
+    text-align: left;
+}
+
+.content .post-actions .items_likes{
+    display: inline-block;
+    max-width: 60px;
+    height: 30px;
+    overflow: hidden;
+}
+.content .post-actions .items_likes .like_btn{
+    background-image: url(../logo/grayheart.png);
+    background-size: 100% 100%;
+    line-height: 30px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 5px auto;
+}
+.content .post-actions .items_likes .red_likes{
+    background-image: url(../logo/redheart.png);
+}
+.items_likes .bold {
+    max-width: 33px;
+    overflow: hidden;
+    line-height: 30px;
+    padding: 0px 0px;
+    color: #666666;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+/*评论区样式*/
+.post-comments {
+    width: 824px;
+    margin: 26px auto;
+    padding: 20px 60px 60px;
+    background-color: #fff;
+    font-size: 16px;
+}
+.all-comment {
+    margin-bottom: 15px;
+}
+.comment-wrapper {
+    padding: 20px 0 0;
+}
+.comment-wrapper .comment-total {
+    margin: 0 0 40px;
+    color: #85888a;
+}
+/*添加评论*/
+.all-comment .comment-form {
+    padding-left: 63px;
+    margin-bottom: 40px;
+}
+.comment-wrapper .comment-form {
+    position: relative;
+}
+.all-comment .comment-form .site-icon img{
+    width: 42px;
+    height: 42px;
+    position: relative;
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.comment-wrapper .comment-form .site-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.all-comment .comment-form textarea {
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    line-height: 22px;
+}
+.comment-wrapper .comment-form textarea {
+    width: 100%;
+    outline: 0;
+    resize: vertical;
+    color: #85888a;
+}
+.all-comment .comment-form .form-action {
+    margin-top: 10px;
+    color: #222;
+    font-size: 14px;
+}
+.comment-wrapper .comment-form .form-action {
+    position: relative;
+    height: 28px;
+    line-height: 28px;
+}
+
+.comment-wrapper .comment-form .form-action .comment-btn {
+    top: 0;
+    width: 62px;
+    border: 1px solid #582522;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    height: 28px;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+    color: #582522;
+}
+
+                                /*评论留言*/
+.post-comments .comment-list li {
+    padding: 7px 0 4px 63px;
+    color: #85888a;
+    position: relative;
+    margin: 20px 0 0;
+}
+.comment-list li .site-icon {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.comment-list li .popover-action img{
+    width: 42px;
+    height: 42px;
+    display: block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.comment-list li .site-link {
+    color: #222;
+}
+.comment-list li .comment-foot{
+    margin-top: 12px;
+    position: relative;
+    font-size: 12px;
+}

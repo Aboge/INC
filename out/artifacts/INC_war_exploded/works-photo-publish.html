@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传发布页面</title>
+    <link href=assets/css/header-footer.css rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/works-publish-main.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+
+    <!--检测每个页面是否为当前登录用户-->
+    <script src="assets/js/CheckUser.js"></script>
+    <script src="assets/js/jquery.form.js"></script>
+</head>
+<body>
+<header>
+    <nav class="nav-wide">
+        <!--header的左边logo和菜单栏-->
+        <div class="nav-left">
+            <a href="inc-home.html">
+                <i class="nav-logo"></i>
+            </a>
+            <!--首页和发现-->
+            <ul class="supnav-list">
+                <li class="supnav-item"><a class="active" href="inc-home.html">首页</a></li>
+                <li class="supnav-item"><a href="inc-photo.html">影像</a></li>
+                <li class="supnav-item"><a href="inc-article.html">文章</a></li>
+            </ul>
+        </div>
+        <!--header的右边用户logo和搜索栏-->
+        <div class="nav-right">
+            <div class="nav-search">
+                <i class="icon-search J-search-bth"></i>
+                <!--form用于为用户输入创建 HTML 表单,用于向服务器传输数据-->
+                <form action="search" method="get">
+                    <!--required 属性规定必需在提交之前填写输入字段;表单名字为：query;autocomplete 属性规定输入字段是否应该启用自动完成功能;-->
+                    <input required class="search-input" type="text" name="query" placeholder="搜索" autocomplete="on">
+                </form>
+            </div>
+
+            <!--登录状态-->
+            <ul class="supnav-list">
+                <!--发布文章和图片-->
+                <li class="supnav-item subnav-trigger nav-publish">
+                    <!--默认发布按钮为发布图片-->
+                    <a id="fabu" href="works-photo-publish.html">
+                        发布
+                        <span class="caret"></span>
+                    </a>
+                    <!--发布按钮子菜单-->
+                    <ul class="subnav-list">
+                        <li><a href="works-photo-publish.html">发图博</a> </li>
+                        <li><a href="works-article-pubish.html">发文博</a> </li>
+                    </ul>
+                </li>
+                <!--站内评论、点赞、私信-->
+                <li class="supnav-item nav-message subnav-trigger">
+                    <a class="icon-message" title="通知" href="inc-message.html?tab-index=1">
+                        <i class="message-logo"></i>
+                    </a>
+                    <ul class="subnav-list">
+                        <li><a href="inc-message.html?tab-index=1">评论</a> </li>
+                        <li><a href="inc-message.html?tab-index=2">喜欢</a> </li>
+                        <li class="subnav-separator"><a href="inc-message.html?tab-index=3">私信</a> </li>
+                    </ul>
+                </li>
+                <!--用户个人头像（主页、关注、喜欢、退出登录）-->
+                <li class="supnav-item nav-user subnav-trigger">
+                    <a class="user-info" href="inc-user.html">
+                        <img class="avatar" src="">
+                        <span class="username"></span>
+                    </a>
+                    <!--用户子菜单-->
+                    <ul class="subnav-list">
+                        <li>
+                            <a href="inc-user.html">我的主页</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=1">我的喜欢</a>
+                        </li>
+                        <li>
+                            <a href="inc-user-mymessage.html?tab-index=2">我的评论</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="quit">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="content">
+        <!--上传选框-->
+        <div class="main-zone">
+            <ul>
+                <li class="upload-item">
+                    <div class="upload-photo">
+                        <i class="icon-add"><img src="assets/logo/addlogo.png"></i>
+                        <p>点击上传图片</p>
+                    </div>
+                    <form id="imgform" action="/INC/UploadHandleServlet.do" enctype="multipart/form-data" method="post">
+
+                        <input type="file" id="img" name="file2" class="file-input" multiple="">
+                        <input type="button" id="imgsubmit" value="确认上传" >
+
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <!--图片上传选项-->
+        <div class="aside-zone">
+            <form class="post-form" action="/rest/posts" method="POST">
+
+                <label>标题</label>
+                <input id="title-input" type="text" class="m-input" name="title" value="" autofocus="" autocomplete="off">
+                <label>图博描述</label>
+                <textarea id="content-input" class="m-input" name="content" placeholder="说说你的创作经历..."></textarea>
+                <div class="widget-taginput">
+                    <label>标签</label>
+                    <span class="tags-count">0/1</span>
+                    <div class="tags-wrap m-input">
+                        <!--<input type="text" class="tag-input" placeholder="请选择标签">-->
+                        <div class="tag-input">请选择标签</div>
+                    </div>
+                    <label>推荐标签</label>
+                    <div class="tags-recommend">
+                        <a class="tag-item" data-id="1">人像</a>
+                        <a class="tag-item" data-id="2">风光</a>
+                        <a class="tag-item" data-id="3">街拍</a>
+                        <a class="tag-item" data-id="4">城市</a>
+                        <a class="tag-item" data-id="5">校园</a>
+                        <a class="tag-item" data-id="6">旅行</a>
+                        <a class="tag-item" data-id="7">纪实</a>
+                        <a class="tag-item" data-id="8">色彩</a>
+                        <a class="tag-item" data-id="9">手机</a>
+                        <a class="tag-item" data-id="10">黑白</a>
+                        <a class="tag-item" data-id="11">胶片</a>
+                        <a class="tag-item" data-id="12">抓拍</a>
+                    </div>
+                </div>
+                <input type="button" class="publish-btn" value="发布">
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+<script>
+    $(function () {
+
+        /*检测登录*/
+        check_login();
+
+        /*添加标签*/
+        var i=0;
+        var _this="";
+        $('.tags-recommend').on('click','a',function () {
+            _this = this;
+            if($('.tags-wrap a').length>0) {alert('只能选择一个标签');return;}
+            else {(i++);$('.tags-count').text(i+"/1");}
+
+            /*添加标签*/
+            $('.tag-input').before($(_this));
+            $('.tag-input').attr("data-id",$(_this).attr("data-id"));
+        });
+
+        $('.tags-wrap').on('click','a',function () {
+            i--;
+            $('.tags-count').text(i+"/1");
+            $('.tags-recommend').append($(this));
+        });
+
+        /*图片上传ajax*/
+        /*$("#img").change(function () {
+            alert($(this).val());
+            alert($(this).val().split('\\')[$(this).val().split('\\').length-1]);
+        });*/
+
+        $("#imgsubmit").click(function(){
+
+            $(".upload-photo").css("display","none");
+            $("#imgsubmit").css("display","none");
+
+            var options = {
+                url:"/INC/UploadHandleServlet.do",
+                success:function (data) {
+                    console.log(data);
+                    $("#imgform").before('<img src="assets/images/pic/'+data[0].imgPath+'" style="width: 200px">');
+                }
+
+            };
+
+            // bind form using 'ajaxForm'
+            $('#imgform').ajaxSubmit(options);
+
+        });
+
+        function photo_publish(){
+            var photoTitle = $("#title-input").val();
+            var photointroduction = $("#content-input").val();
+            var photoname = $("#img").val().split('\\')[$("#img").val().split('\\').length-1];
+            var photoTag = $(".tag-input").attr("data-id");
+            $.ajax({
+                url:'/INC/NewPhoto.do',
+                type:"post",
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                data:{
+                    'photointroduction':photointroduction,
+                    'photoTitle':photoTitle,
+                    'photoTag':photoTag,
+                    'photoname':photoname
+                }
+            }).then(function(data){
+
+                if(data[0].result)
+                {
+                    alert("发布成功！");
+                    location.href="inc-photo.html";
+                }
+                else
+                {
+
+                }
+            });
+        }
+
+        $(".publish-btn").click(function () {
+            photo_publish();
+            return false;
+        });
+
+    })
+</script>
+</html>

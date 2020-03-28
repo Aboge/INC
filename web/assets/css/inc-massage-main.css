@@ -1,0 +1,109 @@
+/*body {
+    overflow:scroll;
+    overflow-x:hidden;
+}*/
+main{
+    display: block;
+    max-width: 1280px;
+    min-height: 300px;
+    overflow-x:hidden;
+}
+.massage-content{
+    position: relative;
+    width: 700px;
+    padding: 40px 0 0;
+    margin: 0 auto;
+}
+                    /*站内通知标题*/
+.massage-title .tab-item::after{
+    content: "/";
+    margin: 0 17px 0 20px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #85888a;
+    vertical-align: text-top;
+}
+
+.massage-title .tab-item:last-child::after{
+    content: " ";
+}
+
+/*默认标题样式*/
+.massage-title .tab-item{
+    position: relative;
+    line-height: 22px;
+    color: #85888a;
+}
+/*当前的标题样式*/
+.massage-title .active-tab{
+    color: #582522;
+}
+                                            /*通知内容*/
+.tab-cont{
+    overflow: hidden;
+    height: auto;
+}
+.tab-cont__wrap{
+    width: 2100px;
+    position: absolute;
+    left: 0px;
+}
+.item{
+    float: left;
+    width: 700px;
+}
+/**/
+.item li{
+    position: relative;
+    min-height: 82px;
+    padding: 20px 0 20px 62px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.item li:last-child{
+    border-bottom: none;
+}
+ul ,li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/*通知头像*/
+.user-icon{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 42px;
+    height: 42px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.user-icon img{
+    display: block;
+    width: 100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+/*评论标题的设定*/
+.item li p{
+    max-width: 545px;
+    margin: 10px 0 0;
+    line-height: 20px;
+}
+.item li p a{
+    margin: 0 4px;
+    color: #1936fa;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*评论时间*/
+.item li time{
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #85888a;
+}

@@ -1,0 +1,176 @@
+
+/*标签导航栏*/
+.title-choose{
+    width: 100%;
+    height: 60px;
+    padding: 16px 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 8px 0 rgba(133,136,138,.1);
+    -moz-box-shadow: 0 2px 8px 0 rgba(133,136,138,.1);
+    box-shadow: 0 2px 8px 0 rgba(133,136,138,.1);
+}
+.title-choose ul{
+    position: relative;
+    text-align: center;
+    font-size: 0;
+}
+.title-choose ul li{
+    display: inline-block;
+    height: 28px;
+    font-size: 14px;
+    line-height: 28px;
+}
+.title-choose ul li a{
+    position: relative;
+    display: block;
+    height: 100%;
+    margin: 0 20px;
+    color: #222;
+    text-decoration: none;
+}
+.title-choose ul li a.title-active{
+    border-bottom: 2px solid #582522;
+}
+/*文章展示模块*/
+main{
+    display: block;
+    min-height: 10px;
+    width: 1110px;
+    margin: 0 auto;
+    color: #292525;
+    margin-top: 50px;
+}
+    /*每一个文章展示块*/
+main .article-card {
+    border: 1px solid #dbe2e8;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(46,61,73,.08);
+    padding: 20px;
+    margin: 0 0 20px;
+    transition: border .3s ease-in-out;
+}
+    /*发布信息模块*/
+main .article-card .block{
+    display: block;
+}
+main .article-card .block .user-avater{
+    float: left;
+    /*
+    display: inline-block;
+    */
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+}
+main .article-card .user-avater img{
+    /*
+    float: left;
+    */
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 50%;
+    border-style: none;
+}
+main .article-card h4{
+    display: block;
+    vertical-align: middle;
+    font-weight: 400;
+    margin: 0 10px 0 0;
+    font-size: 13px;
+}
+main .article-card time{
+    color: #9b9b9b;
+    vertical-align: middle;
+    font-size: 12px;
+}
+main .article-card section h3.title{
+    font-size: 24px;
+    font-weight: 500;
+    /*font-family: -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif;*/
+    margin: 0 0 10px;
+    line-height: 1.5;
+}
+main .article-card dd section .desc {
+    color: #4a4a4a;
+    line-height: 1.625;
+    margin: 0;
+}
+.article-card dd section{
+    margin: 20px auto;
+
+    max-height: 130px;
+    max-width: 1068px;
+    overflow: hidden;               /*先将超出的文本部分隐藏*/
+    -webkit-text-overflow: ellipsis;        /*用省略号“…”隐藏超出范围的文本*/
+    /*多行文本溢出显示省略号,适用于WebKit浏览器或移动端的页面*/
+    display: -webkit-box;           /*将对象p作为弹性伸缩盒子模型显示*/
+    -webkit-line-clamp: 4;          /*用来限制在一个块元素显示的文本的行数*/
+    -webkit-box-orient: vertical;   /*设置或检索伸缩盒对象的子元素的排列方式*/
+}
+main .article-card .meta{
+    clear: both;
+    margin-top: 40px;
+    color: #9b9b9b;
+}
+.meta .item_b{
+    position: relative;
+    bottom: 20px;
+    float: right;
+    display: inline-block;
+}
+.item_b .items_likes,.items_comment{
+    display: inline-block;
+    max-width: 60px;
+    height: 20px;
+    overflow: hidden;
+}
+.item_b .items_comment{
+    margin-left: 5px;
+}
+/*like-button*/
+.item_b .items_likes .like_btn{
+    background-image: url(../logo/grayheart.png);
+    background-size: 100% 100%;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+}
+.item_b .items_likes .red_likes{  background-image: url(../logo/redheart.png);  }
+.item_b .bold{
+    font-size: 14px;
+    max-width: 33px;
+    overflow: hidden;
+    line-height: 20px;
+    padding: 0px 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+/*comment*/
+.item_b .items_comment .comment_btn{
+    background-image: url(../logo/comment.png);
+    background-size: 100% 100%;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+}
+
+/*加载更多*/
+.load-more {
+    border: 1px solid #dbe2e8;
+    box-shadow: 0 1px 2px rgba(46,61,73,.08);
+    display: block;
+    height: 70px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 70px;
+    width: 100%;
+}

@@ -1,0 +1,268 @@
+header{
+    opacity: 0.84;
+}
+body{
+    min-width: 1194px;
+}
+/*main{
+    position: relative;
+}*/
+.user-background-image{
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    height: 350px;
+    min-width: 1194px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    background-image: url("../img/shamo.jpeg");
+    background-size: 100% 100%;
+}
+.blur{
+    background-size: cover;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+                                                /*用户的头像和名字设定*/
+.user-avatar-all{
+    position: absolute;
+    width: 100%;
+    min-width: 1194px;
+    margin: 0 auto;
+    z-index: 2;
+    text-align: center;
+}
+.user-avatar-iamge{
+    position: relative;
+    height: 180px;
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 200px;
+    background: #9d9d9d;
+    box-shadow: 0 2px 8px 0 rgba(133, 136, 138, .85);
+}
+.user-avatar-iamge img{
+    width: 180px;
+    height: 180px;
+}
+
+
+                                                /*中间导航栏设定*/
+.user-nav{
+    position: relative;
+    z-index: 2;
+    top: 460px;
+    width: 100%;
+    height: 60px;
+    padding: 16px 0;
+    /*
+    background-color: #fff;
+    */
+    -webkit-box-shadow: 0 2px 8px 0 rgba(133, 136, 138, .1);
+    box-shadow: 0 2px 8px 0 rgba(133, 136, 138, 0.1);
+}
+.user-nav .nav-list{
+    position: relative;
+    text-align: center;
+    font-size: 0;
+}
+.user-nav .nav-list ul,li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.user-nav .nav-list li{
+    display: inline-block;
+    height: 28px;
+    font-size: 14px;
+    line-height: 28px;
+}
+.user-nav .nav-list li a{
+    position: relative;
+    display: block;
+    height: 100%;
+    margin: 0 20px;
+    color: #222;
+    text-decoration: none;
+}
+.user-nav .nav-list li a:hover{
+    border-bottom: 2px solid #582522;
+    color: #582522;
+}
+.user-nav .nav-list li.li-active a {
+    border-bottom: 2px solid #582522;
+}
+
+                                            /*图片/文章／资料展示区设定*/
+.clearfix , .user-information{
+    margin-top: 460px;
+    text-align: center;
+}
+                             /*用户文章展示*/
+.article-show{
+    margin-top: 510px;
+}
+.article-show .main{
+    display: block;
+    min-height: 10px;
+    width: 1110px;
+    margin: 0 auto;
+    color: #292525;
+    margin-top: 50px;
+}
+/*每一个文章展示块*/
+.article-show .main .article-card {
+    border: 1px solid #dbe2e8;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(46,61,73,.08);
+    padding: 20px;
+    margin: 0 0 20px;
+    transition: border .3s ease-in-out;
+}
+.main .article-card section h3.title{
+    font-size: 24px;
+    font-weight: 500;
+    /*font-family: -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif;*/
+    margin: 0 0 10px;
+    line-height: 1.5;
+}
+.main .article-card dd section .desc {
+    color: #4a4a4a;
+    line-height: 1.625;
+    margin: 0;
+}
+.main .article-card dd section{
+    margin: 20px auto;
+
+    max-height: 134px;
+    max-width: 1068px;
+    overflow: hidden;               /*先将超出的文本部分隐藏*/
+    -webkit-text-overflow: ellipsis;        /*用省略号“…”隐藏超出范围的文本*/
+    /*多行文本溢出显示省略号,适用于WebKit浏览器或移动端的页面*/
+    display: -webkit-box;           /*将对象p作为弹性伸缩盒子模型显示*/
+    -webkit-line-clamp: 4;          /*用来限制在一个块元素显示的文本的行数*/
+    -webkit-box-orient: vertical;   /*设置或检索伸缩盒对象的子元素的排列方式*/
+}
+.main .article-card .meta{
+    clear: both;
+    margin-top: 40px;
+    color: #9b9b9b;
+}
+.main .article-card .meta time{
+    position: relative;
+    bottom: 20px;
+    float: left;
+    display: inline-block;
+}
+.meta .item_b{
+    position: relative;
+    bottom: 20px;
+    float: right;
+    display: inline-block;
+}
+.item_b .items_likes,.items_comment{
+    display: inline-block;
+    max-width: 60px;
+    height: 20px;
+    overflow: hidden;
+}
+.item_b .items_comment{
+    margin-left: 5px;
+}
+/*like-button*/
+.item_b .items_likes .like_btn{
+    background-image: url(../logo/grayheart.png);
+    background-size: 100% 100%;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+}
+.item_b .items_likes .red_likes{  background-image: url(../logo/redheart.png);  }
+.item_b .bold{
+    font-size: 14px;
+    max-width: 33px;
+    overflow: hidden;
+    line-height: 20px;
+    padding: 0px 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+/*comment*/
+.item_b .items_comment .comment_btn{
+    background-image: url(../logo/comment.png);
+    background-size: 100% 100%;
+    line-height: 20px;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+}
+
+
+
+
+
+                            /*用户资料设置*/
+.user-information{
+    padding: 0 200px;
+}
+.user-information .profile {
+    width: 100%;
+    padding: 28px 28px 0;
+    background-color: #fff;
+}
+.profile .profile-item-block {
+    padding-bottom: 20px;
+}
+.profile .profile-item-block .profile-detailItem {
+    text-align: left;
+    overflow: hidden;
+    margin: 0 0 20px;
+}
+/*基本信息样式*/
+.profile .profile-item-block .profile-detailItem .title {
+    width: 80px;
+    margin-right: 20px;
+    display: block;
+    float: left;
+    line-height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222;
+}
+/*修改资料链接样式*/
+.profile-detailItem .edit {
+    float: right;
+    display: block;
+    display: inline;
+    font-size: 14px;
+    color: #582522;
+}
+.profile-detailItem .edit:after{
+    content: ">";
+}
+/*小标题*/
+.profile .profile-item-block .profile-detailItem .profile-detailItem-label {
+    font-size: 14px;
+    display: block;
+    width: 80px;
+    margin-right: 6px;
+    float: left;
+}
+.profile-detailItem .tags {
+    cursor: pointer;
+    margin-right: 10px;
+    color: #222;
+}
+
+

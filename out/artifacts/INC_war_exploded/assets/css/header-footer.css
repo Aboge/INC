@@ -1,0 +1,548 @@
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*font-style: normal;
+    font-weight: 400;*/
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+/*规定整个html显示的文字样式*/
+html {
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 100px;
+    line-height: 1.5
+}
+/*规定所有输入文字的显示字体样式*/
+input, textarea {
+    font-family: -apple-system, BlinkMacSystemFont, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif
+}
+/*页面基础样式*/
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;/*方向属性设置为列*/
+}
+header{
+    /* 我们希望 header 采用固定的高度，只占用必须的空间 */
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+}
+
+main{
+    /* 将 flex-grow 设置为1，该元素会占用全部可使用空间
+       而其他元素该属性值为0，因此不会得到多余的空间*/
+    /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 1 0 auto;
+}
+
+footer{
+    /* 和 header 一样，footer 也采用固定高度*/
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+}
+/*对页面主要内容进行设定*/
+main {
+    display: block;
+    min-height: 300px
+}
+/*对页面所有的ul、li进行基础样式设定*/
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+dl, dd {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    list-style: none
+}
+header.need-fixed {
+    position: fixed;
+    top: 0
+}
+a {
+    text-decoration: none;
+    cursor: pointer;  /*链接上的光标设定为手指*/
+    color: inherit;   /*字体样式继承父元素*/
+}
+
+.text-center {
+    text-align: center
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.over-auto {
+    overflow: auto;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.hide {
+    display: none
+}
+
+.posRelative {
+    position: relative
+}
+
+/*对页眉导航栏进行设定*/
+header {
+    position: relative;
+    min-width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #262523;
+    font-weight: 500;
+    z-index: 3;
+}
+header nav.nav-wide:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+}
+
+header nav.nav-wide{
+    width: 100%;
+    min-width: 1000px;
+    max-width: 1880px;
+    padding: 0 40px;
+    margin: 0 auto;
+    opacity:0.9;      /*设定网站导航栏的不透明度*/
+}
+/*左侧菜单栏浮动在左侧*/
+header nav.nav-wide div.nav-left{
+    float: left;
+    height: 60px;
+    font-size: 0;
+}
+/*右侧菜单栏浮动在右侧*/
+header nav.nav-wide div.nav-right{
+    float: right;
+    height: 60px;
+    font-size: 0;
+}
+/*网站logo的设定*/
+header i.nav-logo{
+    display: inline-block;
+    height: 30px;
+    width: 80px;
+    margin: 15px 0;
+    background-image: url("../logo/logo.png");
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%
+}
+/*左侧导航栏的母菜单和子菜单的样式*/
+div.nav-left li.supnav-item:first-child {
+    margin-left: 34px
+}
+/*当前页面在导航拦显示为红色*/
+div.nav-left li.supnav-item a.active{
+    background-color: #582522;
+}
+/*左侧菜单栏每个导航链接间距*/
+div.nav-left li.supnav-item > a {
+    padding: 0 26px;
+    letter-spacing: 2px
+}
+/*右侧菜单栏每个导航链接间距*/
+div.nav-right li.supnav-item > a {
+    padding: 0 10px;
+    letter-spacing: 2px
+}
+/*设定菜单栏整体横向布局*/
+.supnav-list {
+    display: inline-block;
+    vertical-align: top;  /*顶部对齐*/
+    line-height: 1;
+    font-size: 0
+}
+
+.supnav-list .supnav-item {
+    position: relative;         /*相对定位*/
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px
+}
+/*默认导航栏字体样式*/
+.supnav-list .supnav-item a {
+    display: block;
+    line-height: 60px;
+    height: 60px;
+    color: #9d9d9d;
+    font-weight: 500
+}
+
+/*当鼠标放在菜单上面时字体变成白色*/
+.supnav-list .supnav-item > a:hover {
+    color: #ffffff;
+}
+
+/*菜单栏子菜单样式设定*/
+.supnav-list .subnav-list {
+    position: absolute;     /*定位为绝对定位方式*/
+    top: 59px;
+    z-index: 4;             /*设置元素的堆叠顺序*/
+    left: -14px;
+    display: none;
+    width: 90px;
+    margin-top: 1px;
+    line-height: 1;
+    opacity: 1;
+    -webkit-transition: opacity .5s ease;
+    -moz-transition: opacity .5s ease;
+    transition: opacity .5s ease;
+    border-top: 10px solid rgba(0, 0, 0, 0)
+}
+
+.supnav-list .subnav-list li {
+    position: relative;
+    background-color: #222
+}
+.supnav-list .subnav-list li:first-child {
+    padding-top: 10px
+}
+.supnav-list .subnav-list li:last-child {
+    padding-bottom: 10px
+}
+.supnav-list .subnav-list li.subnav-separator {
+    border-top: 1px solid rgba(133, 136, 138, .3)
+}
+/*每个子菜单链接样式*/
+.supnav-list .subnav-list li a {
+    display: block;    /*元素将显示为块级元素，元素前后会带有换行符*/
+    height: 40px;
+    line-height: 40px;
+    color: #9d9d9d;
+    text-align: center
+}
+.supnav-list .subnav-list li a:hover {
+    color: #ffffff;
+}
+
+.supnav-list .subnav-trigger:hover .subnav-list {
+    display: block;
+    opacity: 1
+}
+
+/*搜索栏样式设置*/
+.nav-search {
+    position: relative;
+    display: inline-block;
+    height: 60px;
+    padding: 20px 0;
+    margin-right: 15px;
+    vertical-align: top
+}
+.nav-search form {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0
+}
+/*默认情况下将search隐藏,输入的文字内容样式进行设定*/
+.nav-search form input {
+    width: 0;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #fff;
+    background: 0 0;
+    border: 0;
+    outline: 0;
+    font-family: inherit;
+    -webkit-transition: width .5s ease-in-out;
+    -moz-transition: width .5s ease-in-out;
+    transition: width .5s ease-in-out
+}
+.nav-search form input:focus {
+    width: 170px
+}
+/*当点击时search宽度变宽*/
+div.nav-right div.nav-search:hover  form input{
+    width: 170px;
+}
+
+/*对输入的内容样式进行设定*/
+.nav-search form input::-webkit-input-placeholder {
+    color: #85888a
+}
+.nav-search form input:-moz-placeholder {
+    color: #85888a
+}
+.nav-search form input::-moz-placeholder {
+    color: #85888a
+}
+.nav-search form input:-ms-input-placeholder {
+    color: #85888a
+}
+/*.nav-search form input::placeholder {
+    color: #85888a
+}*/
+/*搜索栏布局*/
+.nav-search .icon-search {
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer
+}
+/*搜索栏前logo设定*/
+.nav-search .icon-search{
+    display: inline-block;
+    background-image: url("../logo/search.png");
+    background-repeat:no-repeat;
+    background-size: 15px 15px;
+    width: 19px;
+    height: 19px;
+    margin: 3px -8px;
+    position: absolute;
+    z-index: 100;
+}
+
+/*发布选项样式设定*/
+.caret{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 1px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+#fabu{
+    background-color: #582522;
+}
+/*私信通知栏logo图标样式设定*/
+.message-logo{
+    display: inline-block;
+    height: 17px;
+    width: 25px;
+    margin: 22px 7px;
+    background-image: url("../logo/letter01.png");
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%
+}
+.message-logo:hover{
+    display: inline-block;
+    height: 17px;
+    width: 25px;
+    margin: 22px 7px;
+    background-image: url("../logo/letter02.png");
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%
+}
+
+/*用户栏设置*/
+.supnav-list .nav-user {
+    max-width: 200px;
+    padding: 17px 0;
+    margin-left: 0
+}
+.supnav-list .nav-user .user-info {
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 17px;
+    font-size: 14px;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.supnav-list .nav-user .user-info .vip-right {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+    z-index: 2
+}
+.supnav-list .nav-user .user-info .vip-left {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 13px;
+    z-index: 1
+}
+.supnav-list .nav-user img {
+    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: middle
+}
+
+/*页面底部设计*/
+footer {
+    min-width: 1000px;
+    max-width: 1880px;
+    width: 100%;
+    padding: 20px 40px;
+    margin: 0 auto;;
+    clear: both;
+    color: #f9f9f9;
+    font-size: 12px;
+    background-color: #262523;
+    margin-top: 100px;
+}
+footer a {
+    color: inherit;
+    text-decoration: none;
+    outline: 0
+}
+/*当鼠标移动到logo和链接上时添加下划线*/
+footer a:hover {
+    text-decoration: underline
+}
+footer .footer-left {
+    float: left
+}
+
+footer .footer-right {
+    float: right;
+    margin-right: 10px;
+}
+
+/*底部标题设计*/
+footer .fluid-title {
+    font-size: 14px;
+    color: #9d9d9d;
+    margin-bottom: 10px;
+    letter-spacing: 10px
+}
+/*对左边描述内容的设定*/
+footer .fluid-content {
+    max-width: 342px;
+}
+footer .inc-desc{
+    margin-right: 70px;
+    line-height: 1.67;
+}
+/*微信的小logo*/
+footer .icon-wechat{
+    display: inline-block;
+    height: 16px;
+    width: 20px;
+    margin: 10px 7px;
+    background-image: url("../logo/wechatlogo.png");
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%
+}
+/*微信弹出二维码的样式*/
+footer .qrcode-parallel .qrcodewechat{
+    background-image: url('../logo/wechatlogo.jpg');
+    position: relative;
+    bottom: 50px;
+    right: 80px;
+    height: 80px;
+    width: 80px;
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    display: none;
+}
+footer .qrcode-parallel:hover > a.qrcodewechat {
+    display: block;
+}
+
+footer .qrcode-parallel{
+    display: inline-block;
+    vertical-align: top;
+    height: 36px;
+    width: 40px;
+}
+/*微博的小logo*/
+footer i.icon-weibo{
+    display: inline-block;
+    height: 16px;
+    width: 20px;
+    margin: 10px 7px;
+    background-image: url("../logo/weibologo.png");
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%
+}
+footer .link-logo {
+    margin-right: 5px;
+    position: relative;
+    display: inline-block
+}
+
+footer .link-logo:last-child {
+    margin-right: 0
+}
+
+footer .inc-detail {
+    color: #85888a;
+    margin-top: 15px;
+}
+footer .inc-detail a:hover {
+    text-decoration: none;
+}
+footer .inc-detail a:hover i {
+    text-decoration: underline;
+}
+footer .slash-list {
+    display: inline-block;
+    margin-left: 10px
+}
+footer .slash-list .slash-item:before {
+    color: #85888a;
+    text-decoration: none
+}
+
+.slash-list .slash-item {
+    display: inline-block
+}
+
+.slash-list .slash-item:before {
+    content: '/';
+    color: #E0E0E0;
+    font-size: 12px;
+    margin: 0 10px
+}
+
+.slash-list .slash-item:first-child:before {
+    content: '';
+    margin: 0
+}
+
+/* to_top */
+.to_top a,.to_top a:hover{background:url("../logo/gotop.png") no-repeat; opacity:0.7;}
+.to_top a{
+    background-position:0 0;float:left;height:50px;overflow:hidden;width:50px;position:fixed;bottom:35px;cursor:pointer;right:20px;
+    _position:absolute;
+    _right:auto;
+    /*_left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft, 10)||0)-(parseInt(this.currentStyle.marginRight, 10)||20));
+    _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||20)-(parseInt(this.currentStyle.marginBottom, 10)||20)));
+*/}
+.to_top a:hover{background-position: 0 -50px;}
